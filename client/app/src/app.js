@@ -31,7 +31,6 @@ angular.module('myApp', [
    .state('home.goals.id', {
      url: '/:id',
      templateUrl: '../views/goal.html',
-     controller: 'd3Ctrl'
      // controller: function($scope, $stateParams){
      //          $scope.person = $scope.contacts[$stateParams.id];
      //        }

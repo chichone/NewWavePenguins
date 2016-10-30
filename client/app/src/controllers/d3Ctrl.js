@@ -1,13 +1,9 @@
-
-angular.module('myApp.controllers')
-  .controller('d3Ctrl', function($scope, $stateParams, $http, Goals, $state){
-   
+  function addToD3($scope, $stateParams, $http, $state) {
     for (var i=0; i < $scope.goals.length; i++) {
       if ($scope.goals[i].id === $stateParams.id) {
         $scope.d3Data = $scope.goals[i];
-
       }
-    }        
+    }
 
     $scope.currNode = $scope.d3Data;
 
@@ -18,7 +14,7 @@ angular.module('myApp.controllers')
 
     $scope.addTask = function () {
       // $scope.d3Data.children[0].children.push({"title": $scope.newTask.title});
-      
+
       // Add to DB
       $http({
         method: 'POST',
@@ -28,6 +24,7 @@ angular.module('myApp.controllers')
             "parentId": $scope.currNode.id
         }
       }).then(function(){
+        console.log("reloding state");
         $state.reload();
         // Add to front end scope.d3Data
         // resursive function to traverse d3Data and inject the new Task at the right place
@@ -35,7 +32,7 @@ angular.module('myApp.controllers')
         //    "id": "5814eec179e36cfba0ba72fe",
         //    "title": $scope.newTask.title,
         //    "children": [],
-        //    "completed": false, 
+        //    "completed": false,
         // };
       // });
     });
@@ -44,7 +41,6 @@ angular.module('myApp.controllers')
     $scope.addGoal = function() {
         console.log('clicked')
     }
-
-  });
+  }
 
 

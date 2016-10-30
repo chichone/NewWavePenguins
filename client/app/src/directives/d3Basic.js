@@ -11,7 +11,7 @@ angular.module('myApp.directives')
       var margin = {top: 20, right: 120, bottom: 20, left: 120},
         width = 960 - margin.right - margin.left,
         height = 500 - margin.top - margin.bottom;
-        
+
       var i = 0,
         duration = 750,
         root;
@@ -40,14 +40,14 @@ angular.module('myApp.directives')
           return scope.render(scope.data);
         }
       );
-      
+
       // watch for data changes and re-render
       // scope.$watch('data', function(data) {
       //   // console.log(newVals , oldVals)
       //   return scope.render(data[0]);
       // }, true);
 
-      // Render the current 
+      // Render the current
       root = scope.data;
       root.x0 = height / 2;
       root.y0 = 0;
@@ -69,7 +69,7 @@ angular.module('myApp.directives')
       scope.render = function(source){
 
           // Compute the new tree layout.
-          var nodes = tree.nodes(root), 
+          var nodes = tree.nodes(root),
             links = tree.links(nodes);
 
           // Normalize for fixed-depth.
@@ -84,7 +84,7 @@ angular.module('myApp.directives')
             .attr("class", "node")
             .attr("transform", function(d) { return "translate(" + source.y0 + "," + source.x0 + ")"; })
             .on("click", function(d){
-              // render immediate children 
+              // render immediate children
               click(d);
               // pass the item that was clicked as input argument to the 'on-click' callback function
               // defined in the d3-tree directive
@@ -110,12 +110,12 @@ angular.module('myApp.directives')
 
           nodeUpdate.select("circle")
             .attr("r", 10)
-            .style("fill", function(d) { 
+            .style("fill", function(d) {
               if (d.completed) {
                 return "green";
-              } else { 
+              } else {
                 return "#fff";
-              } 
+              }
             });
 
           nodeUpdate.select("text")
